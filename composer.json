@@ -4,7 +4,11 @@
     "autoload": {
         "psr-4": {
             "Ngocdiep\\XuongOop\\": "src/"
-        }
+        },
+        
+    "files": [
+        "helper.php"
+    ]
     },
     "authors": [
         {

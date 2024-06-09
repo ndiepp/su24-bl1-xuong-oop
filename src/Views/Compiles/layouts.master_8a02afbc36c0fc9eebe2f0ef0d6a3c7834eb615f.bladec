@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<!-- Mirrored from demo.dashboardpack.com/sales-html/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 24 May 2024 07:23:13 GMT -->
+
+<head>
+
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+ <title><?php echo $this->yieldContent('title'); ?></title>
+
+ <?php echo $this->runChild('layouts.partials.head'); ?>
+</head>
+
+<body class="crm_body_bg">
+
+
+ <?php echo $this->runChild('layouts.partials.nav'); ?>
+
+ <section class="main_content dashboard_part large_header_bg">
+
+ <?php echo $this->runChild('layouts.partials.topbar'); ?>
+
+ <div class="main_content_iner overly_inner ">
+ <div class="container-fluid p-0 ">
+
+ <?php echo $this->yieldContent('content'); ?>
+ </div>
+ </div>
+
+ <?php echo $this->runChild('layouts.partials.footer'); ?>
+ </section>
+
+
+
+
+ <div id="back-top" style="display: none;">
+ <a title="Go to Top" href="#">
+ <i class="ti-angle-up"></i>
+ </a>
+ </div>
+
+ <?php echo $this->runChild('layouts.partials.script'); ?>
+</body>
+
+<!-- Mirrored from demo.dashboardpack.com/sales-html/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 24 May 2024 07:24:00 GMT -->
+
+</html>
