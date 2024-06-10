@@ -28,6 +28,19 @@
                 <span>Board</span>
             </a>
         </li>
+        <li class="mm-active">
+            <a class="has-arrow" href="#" aria-expanded="false">
+                <div class="icon_menu">
+                    <img src="{{ asset('assets/admin/img/menu-icon/dashboard.svg') }}" alt>
+                </div>
+                <span>Người dùng</span>
+            </a>
+            <ul>
+                
+                <li><a href="{{asset('admin/users')}}">Danh sách người dùng</a></li>
+                <li><a href="{{asset('admin/users/create')}}">Thêm mới người dùng</a></li>
+            </ul>
+        </li>
       
     </ul>
 </nav>

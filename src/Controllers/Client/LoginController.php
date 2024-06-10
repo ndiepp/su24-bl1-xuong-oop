@@ -1,5 +1,7 @@
 <?php
+
 namespace Ngocdiep\XuongOop\Controllers\Client;
+
 use Ngocdiep\XuongOop\Commons\Controller;
 use Ngocdiep\XuongOop\Commons\Helper;
 use Ngocdiep\XuongOop\Models\User;
@@ -7,46 +9,56 @@ use Ngocdiep\XuongOop\Models\User;
 class LoginController extends Controller
 {
     private User $user;
-    public function __construct(){
+    public function __construct()
+    {
         $this->user = new User();
     }
-    public  function showFormLogin(){
+    public  function showFormLogin()
+    {
 
         auth_check();
-       
-        $this->renderViewClient('login');  
-    }
-    public  function login(){
 
-        
+        $this->renderViewClient('login');
+    }
+    public  function login()
+    {
+
+
         auth_check();
 
 
         try {
-            $user= $this->user->findByEmail($_POST['email']);
+            $user = $this->user->findByEmail($_POST['email']);
 
-            if(empty($user)){
-                throw new \Exception('không tồn tại email: '.$_POST['email']);
+            if (empty($user)) {
+                throw new \Exception('không tồn tại email: ' . $_POST['email']);
             }
 
-            $flag = password_verify($_POST['password'],$user['password'] );
-            if($flag){
+            $flag = password_verify($_POST['password'], $user['password']);
+            if ($flag) {
 
                 $_SESSION['user'] = $user;
-                header('location: ' .url('admin/') );
+
+                unset($_SESSION['cart']);
+                if ($user['type'] == 'admin') {
+                    header('location: ' . url('admin/'));
+                    exit;
+                }
+                header('location: ' .url('/') );
                 exit;
             }
             throw new \Exception('Password không đúng');
         } catch (\Throwable $th) {
             $_SESSION['error'] = $th->getMessage();
-            header('location: ' .url('login') );
-                exit;
+            header('location: ' . url('login'));
+            exit;
         }
     }
-    public function logout(){
+    public function logout()
+    {
+        unset($_SESSION['cart-' .$_SESSION['user']['id']]);
         unset($_SESSION['user']);
-
-        header('location: ' .url() );
+        header('location: ' . url());
         exit;
     }
 }
